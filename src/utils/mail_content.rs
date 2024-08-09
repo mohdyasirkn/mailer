@@ -70,7 +70,7 @@ pub fn mail_content(receiver: Receiver) -> String {
     <div style="font-family: Arial, Helvetica, sans-serif; padding: 10px; background-color: #002147; display: flex; align-items: center; justify-content: center; min-height: 100vh;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff; border-radius: 10px; line-height: 1.6; border: 1px solid #c7c3c3;">
             <div style="text-align: center;">
-                <img src="fossmec round logo.png" style="width: 80px; height: 80px; margin-right: 10px;">
+                <img src="https://github.com/mohdyasirkn/mailer/blob/content/fossmec%20round%20logo.png?raw=true" style="width: 80px; height: 80px; margin-right: 10px;">
                 <h1 style="color: #F5A212; margin: 0;">FOSSMEC</h1>
             </div>
             <div style="text-align: center; margin-top: 20px;">
