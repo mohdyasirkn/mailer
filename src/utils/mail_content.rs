@@ -96,11 +96,12 @@ pub fn mail_content(receiver: &Receiver) -> String {
             <p>Once again, congratulations on being shortlisted, and we look forward to seeing you in the next round!</p>
             <p>May the foss be with you</p>
             <p>Best regards,</p>
-            <p style="color: #888888;">
+            <p style="opacity: 60%;">
                 FOSSMEC<br>
                 Open Source Cell of Model Engineering College<br>
                 foss@mec.ac.in
             </p>
+            <p style="font-size: 12px; opacity: 35%;">This is an automated mail, do not reply to this, if you have any query <a href="mailto:foss@mec.ac.in">send a mail here</a></p>
         </div>
     </div>
 </body>"#,
