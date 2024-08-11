@@ -1,3 +1,5 @@
+use utils::recepients::{self, mail_list_from_csv};
+
 mod utils;
 #[tokio::main]
 async fn main() {
@@ -21,18 +23,26 @@ async fn main() {
             .port(587)
             .build();
 
-    utils::mail::send_email_smtp(
-        &mailer,
-        from.as_str(),
-        utils::recepients::mail_list().as_str(),
-        utils::mail_content::subject().as_str(),
-        utils::mail_content::mail_content(),
-    )
-    .await
-    .unwrap();
+    let maillist = mail_list_from_csv();
 
-    println!(
-        "Successfully sent email(s) to {}",
-        utils::recepients::mail_list()
-    );
+    for recepient in maillist.iter() {
+        println!(
+            "Sending mail to name:{}, mailid:{}, team: {}",
+            recepient.name, recepient.mailid, recepient.team
+        );
+        utils::mail::send_email_smtp(
+            &mailer,
+            from.as_str(),
+            &recepient.mailid,
+            utils::mail_content::subject().as_str(),
+            utils::mail_content::mail_content(recepient),
+        )
+        .await
+        .unwrap();
+    }
+
+    // println!(
+    //     "Successfully sent email(s) to {}",
+    //     utils::recepients::mail_list()
+    // );
 }
