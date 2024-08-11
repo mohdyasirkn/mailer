@@ -12,3 +12,5 @@ lettre = { version = "0.10.0-beta.2", default-features = false, features = [
   "r2d2",
   "builder",
 ] }
+serde = { version = "1.0.206", features = ["derive"] }
+csv = "1.3.0"

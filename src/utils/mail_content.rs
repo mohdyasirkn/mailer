@@ -1,3 +1,8 @@
+use super::links::{
+    get_link_content, get_link_design, get_link_events, get_link_marketing, get_link_tech,
+};
+
+#[derive(Debug, serde::Deserialize)]
 pub enum Team {
     Tech,
     Marketing,
@@ -5,13 +10,13 @@ pub enum Team {
     Design,
     Content,
 }
-
+#[derive(Debug, serde::Deserialize)]
 pub struct Receiver {
-    name: String,
-    mailid: String,
-    team: Team,
-    whatsapplink: String,
+    pub name: String,
+    pub mailid: String,
+    pub team: Team,
 }
+
 impl std::fmt::Display for Team {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         let team_name = match self {
@@ -27,36 +32,33 @@ impl std::fmt::Display for Team {
 
 impl Receiver {
     pub fn new(mailid: String, team: Team, name: String) -> Self {
-        let whatsapplink = match team {
+        Receiver { name, mailid, team }
+    }
+
+    pub fn get_grp_link(&self) -> String {
+        match self.team {
             Team::Tech => {
+                get_link_tech()
                 //paste whtsapp link here without semicolon eg:
                 //"https://www.api.whatsapp.com/9497807759"
             }
             Team::Marketing => {
-                todo!()
+                get_link_marketing()
                 //"https://www.api.whatsapp.com/9497807759"
             }
             Team::Events => {
-                todo!()
-                //"https://www.api.whatsapp.com/9497807759"
-            }
-            Team::Design => {
-                todo!()
+                get_link_events()
                 //"https://www.api.whatsapp.com/9497807759"
             }
             Team::Content => {
-                todo!()
+                get_link_content()
                 //"https://www.api.whatsapp.com/9497807759"
             }
+            Team::Design => get_link_design(),
             _ => {
-                //"link to not found"
+                "some other link".to_string()
+                //"link to not found", please contact this guy, show phone number/whatsapp message button
             }
-        };
-        Receiver {
-            name,
-            mailid,
-            team,
-            whatsapplink: whatsapplink.to_string(),
         }
     }
 }
